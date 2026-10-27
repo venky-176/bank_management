@@ -171,7 +171,7 @@ public class SignUp extends JFrame implements ActionListener {
         jtextP.setFont(new Font("Raleway",Font.BOLD,20));
         add(jtextP);
 
-        JLabel jstate = new JLabel("PinCode:");
+        JLabel jstate = new JLabel("State:");
         jstate.setFont(new Font("raleway",Font.BOLD,20));
         jstate.setBounds(100,650,200,30);
         add(jstate);
@@ -198,7 +198,58 @@ public class SignUp extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+       // JTextField jtext,jtextF,jtextE, jtextA, jtextC, jtextS,jtextP;
 
+        String formno=first;
+        String name=jtext.getText();
+        String fname=jtextF.getText();
+        String dob= ((JTextField)dateChooser.getDateEditor().getUiComponent()).getText();
+        String gender =null;
+        if(r1.isSelected()){
+            gender="male";
+        }else if(r2.isSelected()){
+            gender="female";
+        }
+        String email= jtextE.getText();
+        String martial=null;
+        if(m1.isSelected()){
+            martial="Married";
+        } else if (m2.isSelected()) {
+            martial="Unmarried";
+        }else if(m3.isSelected()){
+            martial="Other";
+        }
+        String address= jtextA.getText();
+        String city=jtextC.getText();
+        String pincode=jtextP.getText();
+        String State= jtextS.getText();
+
+        try{
+            if(jtext.getText().equals("")){
+                JOptionPane.showMessageDialog(null,"Fill all the fields");
+            }else{
+                DatabaseConnection con1= new DatabaseConnection();
+                String q="insert into signup values('"
+                        + formno + "','"
+                        + name + "','"
+                        + fname + "','"
+                        + dob + "','"
+                        + gender + "','"
+                        + email + "','"
+                        + martial + "','"
+                        + address + "','"
+                        + city + "','"
+                        + pincode + "','"
+                        + State + "')";
+                con1.statement.executeUpdate(q);
+                new Signup2(first);
+                setVisible(false);
+            }
+
+
+        }catch (Exception E){
+            E.printStackTrace();
+        }
     }
 
     static void main(String[] args) {
