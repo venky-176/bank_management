@@ -1,9 +1,12 @@
 package bank.management.system;
 
+import com.mysql.cj.protocol.Resultset;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.*;
 
 public class Login extends JFrame implements ActionListener {
     JLabel label1, label2, label3;
@@ -92,6 +95,7 @@ public class Login extends JFrame implements ActionListener {
         setLayout(null);
         setSize(850, 480);// size of the page
         setLocation(450, 200);// setting it in the middle
+        setUndecorated(true);// minimize fullscreen will not visible
         setVisible(true);// to get visible
     }
 
@@ -99,6 +103,17 @@ public class Login extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         try {
             if (e.getSource() == button1) {
+                DatabaseConnection db= new DatabaseConnection();
+                String cardno=jtext.getText();
+                String pin=jpassword.getText();
+                String q="select * from login where card_number='"+cardno+"' and pin='"+pin+"'";
+                ResultSet resultset= db.statement.executeQuery(q);
+                if(resultset.next()){
+                    setVisible(false);
+                    new Main_Class(pin);
+                }else{
+                    JOptionPane.showMessageDialog(null,"Incorrect card no or pin");
+                }
 
             } else if (e.getSource() == button2) {
                 jtext.setText("");
