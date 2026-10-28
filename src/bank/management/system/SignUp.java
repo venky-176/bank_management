@@ -242,7 +242,7 @@ public class SignUp extends JFrame implements ActionListener {
                         + pincode + "','"
                         + State + "')";
                 con1.statement.executeUpdate(q);
-                new Signup2(first);
+                new Signup2(formno);
                 setVisible(false);
             }
 

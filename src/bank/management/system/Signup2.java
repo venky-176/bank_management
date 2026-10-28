@@ -22,7 +22,7 @@ public class Signup2 extends JFrame implements ActionListener {
         image.setBounds(150, 5, 100, 100);
         add(image);
 
-        this.formno = formno;
+        this.formno = first;
 
         JLabel l1 = new JLabel("Page 2:-");
         l1.setFont(new Font("Raleway", Font.BOLD, 22));
@@ -162,7 +162,7 @@ public class Signup2 extends JFrame implements ActionListener {
         add(l12);
 
         JLabel l13 = new JLabel(formno);
-        l13.setFont(new Font("Raleway", Font.BOLD, 18));
+        l13.setFont(new Font("Raleway", Font.BOLD, 14));
         l13.setBounds(760, 10, 60, 30);
         add(l13);
 
@@ -185,13 +185,57 @@ public class Signup2 extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        String rel = (String) combobox.getSelectedItem();
+        String cate = (String) combobox2.getSelectedItem();
+        String inc = (String) combobox3.getSelectedItem();
+        String edu = (String) combobox4.getSelectedItem();
+        String occ = (String) combobox5.getSelectedItem();
 
+        String pan = textPan.getText();
+        String addhar = textAadhar.getText();
+
+        String scitizen=null;
+        if(r1.isSelected()){
+            scitizen="Yes";
+        } else if (r2.isSelected()) {
+            scitizen="No";
+        }
+
+        String eaccount=null;
+        if(e1.isSelected()){
+            eaccount="Yes";
+        } else if (e2.isSelected()) {
+            eaccount="No";
+        }
+
+        try {
+            if(textPan.getText().equals("")|| textAadhar.getText().equals("")){
+                JOptionPane.showMessageDialog(null,"fill all the fields");
+            }else{
+                DatabaseConnection db= new DatabaseConnection();
+                String q="Insert into signup2 values('"
+                        + formno + "','"
+                        + rel + "','"
+                        + cate + "','"
+                        + inc+ "','"
+                        + edu + "','"
+                        + occ + "','"
+                        + pan + "','"
+                        + addhar + "','"
+                        + scitizen + "','"
+                        + eaccount + "')";
+                System.out.println(q);
+                db.statement.executeUpdate(q);
+                new Signup3(formno);
+                setVisible(false);
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
-    //    public Signup2() {
-//
-//    }
+
 
     static void main(String[] args) {
-        new Signup2("1");
+        new Signup2(" ");
     }
 }
