@@ -1,5 +1,4 @@
 package bank.management.system;
-
 import java.sql.*;
 
 public class DatabaseConnection {
@@ -14,7 +13,6 @@ public class DatabaseConnection {
             e.printStackTrace();
         }
     }
-
     static void main(String[] args) {
 
     }
