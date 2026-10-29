@@ -93,7 +93,7 @@ public class PinChange extends JFrame implements ActionListener {
                 }
                 if(p2.getText().equals("")){
                     JOptionPane.showMessageDialog(null,"Re-Enter NEW PIN");
-                    return; 
+                    return;
                 }
                 DatabaseConnection db= new DatabaseConnection();
                 String q1= "update bank set pin='"+pin1+"' where pin='"+pin+"'";

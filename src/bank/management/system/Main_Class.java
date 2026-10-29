@@ -102,8 +102,10 @@ public class Main_Class extends JFrame implements ActionListener {
         }else if(e.getSource()==b5){
             new PinChange(pin);
             setVisible(false);
-        }
-    }
+        }else if(e.getSource()==b4){
+            new MiniStatement(pin);
+            setVisible(false);
+    }}
 
     static void main(String[] args) {
         new Main_Class("");

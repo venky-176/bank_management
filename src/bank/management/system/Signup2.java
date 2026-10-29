@@ -158,11 +158,11 @@ public class Signup2 extends JFrame implements ActionListener {
 
         JLabel l12 = new JLabel("FORM NO");
         l12.setFont(new Font("Raleway", Font.BOLD, 18));
-        l12.setBounds(700, 10, 100, 30);
+        l12.setBounds(650, 10, 100, 30);
         add(l12);
 
         JLabel l13 = new JLabel(formno);
-        l13.setFont(new Font("Raleway", Font.BOLD, 14));
+        l13.setFont(new Font("Raleway", Font.BOLD, 18));
         l13.setBounds(760, 10, 60, 30);
         add(l13);
 
