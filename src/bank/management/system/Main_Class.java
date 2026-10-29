@@ -96,6 +96,12 @@ public class Main_Class extends JFrame implements ActionListener {
         }else if(e.getSource()==b6){
             new BalanceEnquiry(pin);
             setVisible(false);
+        }else if(e.getSource()==b3){
+            new Fastcash(pin);
+            setVisible(false);
+        }else if(e.getSource()==b5){
+            new PinChange(pin);
+            setVisible(false);
         }
     }
 
